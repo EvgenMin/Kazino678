@@ -2,7 +2,7 @@
 import os
 from ctypes import *
 
-# Переменные
+
 valuta = "Руб."
 money = 0
 defaultMoney = 10_000
