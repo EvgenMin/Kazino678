@@ -2,7 +2,6 @@
 import os
 from ctypes import *
 
-
 valuta = "Руб."
 money = 0
 defaultMoney = 10_000
@@ -23,6 +22,29 @@ def proigr(result):
     print(f"    Вы проиграли: {result} {valuta}")
     print(f"    У вас на счету: {money}")
     print("    Нужно отыграться!")
+
+
+# Чтение из файла оставшейся суммы
+def loadMoney():
+    try:
+        f = open("money.dat", "r")
+        m = int(f.readline())
+        f.close()
+    except FileNotFoundError:
+        print(f"Файла не существует, задано значение {defaultMoney} {valuta}")
+        m = defaultMoney
+    return m
+
+
+# Запись суммы в файл
+def saveMoney(moneyToSave):
+    try:
+        f = open("money.dat", "w")
+        f.write(str(moneyToSave))
+        f.close()
+    except:
+        print("Ошибка создания файла, наше Казино закрывается!")
+        quit(0)
 
 
 # Функция установки цвета текста
