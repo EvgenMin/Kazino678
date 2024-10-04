@@ -5,6 +5,7 @@ from ctypes import *
 valuta = "Руб."
 money = 0
 defaultMoney = 10_000
+playGame = True
 windll.Kernel32.GetStdHandle.restype = c_ulong
 h = windll.Kernel32.GetStdHandle(c_ulong(0xFFFFFFF5))
 
@@ -81,3 +82,40 @@ def colorLine(c, s):
     print("*" * (len(s) + 2))
     print(" " + s)
     print("*" * (len(s) + 2))
+
+
+def main():
+    global money, playGame
+
+    money = loadMoney()
+    startMoney = money
+
+    while (playGame and money>0):
+        colorLine(10, "Приветствую тебя в нашем казино, дружище!")
+        color(14)
+        print(f"У тебя на счету {money} {valuta}")
+
+        color(6)
+        print("Ты можешь сыграть в:")
+        print("    1. Рулетку")
+        print("    2. Кости")
+        print("    3. Однорукого бандита")
+        print("    0. Выход. Ставка 0 в играх - Выход.")
+        color(7)
+
+        x = getInput("1230","    Твой выбор?")
+
+        if (x == "0"):
+            playGame = False
+        elif(x == "1"):
+            # roulette()
+            pass 
+        elif(x == "1"):
+            # dice()
+            pass 
+        elif(x == "1"):
+            # oneHandBandit()
+            pass 
+
+
+        
